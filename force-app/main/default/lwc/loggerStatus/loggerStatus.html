@@ -1,0 +1,22 @@
+<template>
+  <lightning-card title="Logger Status">
+    <div class="slds-m-around_medium">
+      <lightning-button
+        variant="success"
+        label="Start Logging"
+        title="Start Logging"
+        onclick={handleSubscribe}
+        disabled={isSubscribeDisabled}
+        class="slds-m-left_x-small"
+      ></lightning-button>
+      <lightning-button
+        variant="destructive"
+        label="Stop Logging"
+        title="Stop Loggin"
+        onclick={handleUnsubscribe}
+        disabled={isUnsubscribeDisabled}
+        class="slds-m-left_x-small"
+      ></lightning-button>
+    </div>
+  </lightning-card>
+</template>
