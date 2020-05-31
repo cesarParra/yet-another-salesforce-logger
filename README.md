@@ -2,8 +2,8 @@
 
 ## Installing
 
-Package Id: `04t5w000005qoAoAAI`
-Installation URL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5w000005qoAoAAI
+Package Id: `04t5w000005qoAtAAI`
+Installation URL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5w000005qoAtAAI
 
 Unlocked Packaged
 

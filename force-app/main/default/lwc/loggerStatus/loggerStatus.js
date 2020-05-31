@@ -2,7 +2,7 @@ import { LightningElement } from "lwc";
 import { subscribe, unsubscribe } from "lightning/empApi";
 
 export default class LoggerStatus extends LightningElement {
-  channelName = "/event/LogEvent__e";
+  channelName = "/event/yasl__LogEvent__e";
   isSubscribeDisabled = false;
   isUnsubscribeDisabled = !this.isSubscribeDisabled;
 

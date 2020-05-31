@@ -1,6 +1,6 @@
-public with sharing class Logger {
+global with sharing class Logger {
   private static List<LoggerBase> loggerImplementations;
-  public static Boolean immediate = true;
+  global static Boolean immediate = true;
 
   static {
     loggerImplementations = new List<LoggerBase>{
@@ -14,39 +14,39 @@ public with sharing class Logger {
     loggerImplementations = loggers;
   }
 
-  public static void debug(Type apexClass, String message) {
+  global static void debug(Type apexClass, String message) {
     log(LoggingLevel.DEBUG, apexClass, message);
   }
 
-  public static void debug(String message) {
+  global static void debug(String message) {
     log(LoggingLevel.DEBUG, null, message);
   }
 
-  public static void info(Type apexClass, String message) {
+  global static void info(Type apexClass, String message) {
     log(LoggingLevel.INFO, apexClass, message);
   }
 
-  public static void info(String message) {
+  global static void info(String message) {
     log(LoggingLevel.INFO, null, message);
   }
 
-  public static void warn(Type apexClass, String message) {
+  global static void warn(Type apexClass, String message) {
     log(LoggingLevel.WARN, apexClass, message);
   }
 
-  public static void warn(String message) {
+  global static void warn(String message) {
     log(LoggingLevel.WARN, null, message);
   }
 
-  public static void error(Type apexClass, String message) {
+  global static void error(Type apexClass, String message) {
     log(LoggingLevel.ERROR, apexClass, message);
   }
 
-  public static void error(String message) {
+  global static void error(String message) {
     log(LoggingLevel.ERROR, null, message);
   }
 
-  public static void trace() {
+  global static void trace() {
     for (LoggerBase logger : loggerImplementations) {
       logger.trace();
 
@@ -56,7 +56,7 @@ public with sharing class Logger {
     }
   }
 
-  public static void flush() {
+  global static void flush() {
     for (LoggerBase logger : loggerImplementations) {
       logger.flush();
     }
