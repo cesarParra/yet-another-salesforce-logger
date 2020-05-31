@@ -1,11 +1,18 @@
 {
-  "packageDirectories": [
-    {
-      "path": "force-app",
-      "default": true
+    "packageDirectories": [
+        {
+            "path": "force-app",
+            "default": true,
+            "package": "Logger",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.NEXT"
+        }
+    ],
+    "namespace": "yasl",
+    "sfdcLoginUrl": "https://login.salesforce.com",
+    "sourceApiVersion": "48.0",
+    "packageAliases": {
+        "Logger": "0Ho5w000000TN8BCAW",
+        "Logger@0.1.0-1": "04t5w000005qoAoAAI"
     }
-  ],
-  "namespace": "",
-  "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "48.0"
 }
