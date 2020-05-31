@@ -5,7 +5,7 @@
             "default": true,
             "package": "Logger",
             "versionName": "ver 0.1",
-            "versionNumber": "0.2.0.NEXT"
+            "versionNumber": "0.2.1.NEXT"
         }
     ],
     "namespace": "yasl",
@@ -14,6 +14,7 @@
     "packageAliases": {
         "Logger": "0Ho5w000000TN8BCAW",
         "Logger@0.1.0-1": "04t5w000005qoAoAAI",
-        "Logger@0.2.0-1": "04t5w000005qoAtAAI"
+        "Logger@0.2.0-1": "04t5w000005qoAtAAI",
+        "Logger@0.2.1-1": "04t5w000005qoAyAAI"
     }
 }
