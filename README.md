@@ -1,13 +1,18 @@
 # yet-another-salesforce-logger
 
-## Installing
+Surfaces server-side (Apex) logging through the browser's console.
 
-Package Id: `04t5w000005qoAyAAI`
+## Installation
+
+Yet Another Salesforce Logger (YASL) can be installed as an unlocked package.
+
+### By SFDX
+
+`sfdx force:package:install --package 04t5w000005qoAyAAI`
+
+### By installation URL
+
 Installation URL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5w000005qoAyAAI
-
-Unlocked Packaged
-
-Namespace: `yasl`
 
 ## Usage
 

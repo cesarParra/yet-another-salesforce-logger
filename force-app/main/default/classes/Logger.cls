@@ -63,8 +63,13 @@ global with sharing class Logger {
   }
 
   private static void log(LoggingLevel level, Type apexClass, String message) {
-    // TODO: Dynamically figure out the place of the call by using trace
-    String apexClassName = apexClass == null ? '' : apexClass.getName();
+    String apexClassName = '';
+    if (apexClass != null) {
+      apexClassName = apexClass.getName();
+    } else {
+      Tracer.Trace trace = Tracer.newInstance().getLastTrace();
+      apexClassName = trace.ClassName == null ? '' : trace.ClassName;
+    }
     for (LoggerBase logger : loggerImplementations) {
       logger.log(new SingleLog(level, apexClassName, message));
 
