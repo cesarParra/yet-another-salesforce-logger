@@ -79,7 +79,7 @@ public with sharing class Tracer {
                 return;
             }
 
-            traceString = traceString.remove('Class.');
+            traceString = traceString.removeStart('Class.');
             List<String> traceSections = traceString.split(':');
             String classMethodSection = traceSections[0];
             List<String> classMethodSplit = classMethodSection.split('\\.');

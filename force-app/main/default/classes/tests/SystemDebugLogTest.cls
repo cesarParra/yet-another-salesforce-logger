@@ -14,7 +14,7 @@ private class SystemDebugLogTest {
   @IsTest
   private static void withLogs_debugCalled() {
     SystemDebugLog log = new SystemDebugLog();
-    log.log(new SingleLog(LoggingLevel.DEBUG, 'TestClass', 'Test Message'));
+    log.log(new SingleLog(LoggingLevel.DEBUG, Tracer.newInstance().getLastTrace(), 'Test Message'));
     TestDebugLogger logger = new TestDebugLogger();
     log.setDebugLogger(logger);
 

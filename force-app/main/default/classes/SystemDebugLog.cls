@@ -1,5 +1,5 @@
 public class SystemDebugLog extends LoggerBase {
-  private String MESSAGE_FORMAT = '{0}: {1}';
+  private String MESSAGE_FORMAT = '{0}.{1}: {2}';
   private DebugLogger loggerImplementation = new SystemDebugLogger();
 
   public override void commitLogs() {
@@ -9,10 +9,9 @@ public class SystemDebugLog extends LoggerBase {
   }
 
   private String getFormattedMessage(SingleLog log) {
-    String apexClass = log.ApexClass == null ? '' : log.ApexClass;
     return String.format(
       MESSAGE_FORMAT,
-      new List<String>{ apexClass, log.Message }
+      new List<String>{ log.LastTrace.ClassName, log.LastTrace.MethodName, log.Message }
     );
   }
 

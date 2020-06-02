@@ -11,7 +11,7 @@ private class PlatformEventLogTest {
   @IsTest
   private static void withLogs_expectEventsPublished() {
     PlatformEventLog log = new PlatformEventLog();
-    log.log(new SingleLog(LoggingLevel.DEBUG, 'TestClass', 'Test Message'));
+    log.log(new SingleLog(LoggingLevel.DEBUG, Tracer.newInstance().getLastTrace(), 'Test Message'));
     log.flush();
 
     System.assert(log.eventPublished);

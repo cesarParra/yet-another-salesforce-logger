@@ -2,13 +2,14 @@
 private class SingleLogTest {
   @IsTest
   private static void constructor_canConstruct() {
+    Tracer.Trace lastTrace = Tracer.newInstance().getLastTrace();
     SingleLog log = new SingleLog(
       LoggingLevel.DEBUG,
-      'TestClassName',
+      lastTrace,
       'Test message'
     );
     System.assertEquals(LoggingLevel.DEBUG, log.Level);
-    System.assertEquals('TestClassName', log.ApexClass);
+    System.assertEquals(lastTrace, log.LastTrace);
     System.assertEquals('Test message', log.Message);
   }
 }

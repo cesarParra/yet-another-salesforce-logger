@@ -5,7 +5,10 @@ public with sharing class PlatformEventLog extends LoggerBase {
     for (SingleLog log : logs) {
       events.add(
         new LogEvent__e(
-          ApexClass__c = log.ApexClass,
+          ApexClass__c = log.LastTrace.ClassName,
+          ApexMethod__c = log.LastTrace.MethodName,
+          LineNumber__c = log.LastTrace.LineNumber,
+          ColumnNumber__c = log.LastTrace.ColumnNumber,
           LoggingLevel__c = log.Level.name().toLowerCase().capitalize(),
           Body__c = log.Message,
           UserId__c = UserInfo.getUserId()

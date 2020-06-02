@@ -14,36 +14,20 @@ global with sharing class Logger {
     loggerImplementations = loggers;
   }
 
-  global static void debug(Type apexClass, String message) {
-    log(LoggingLevel.DEBUG, apexClass, message);
-  }
-
   global static void debug(String message) {
-    log(LoggingLevel.DEBUG, null, message);
-  }
-
-  global static void info(Type apexClass, String message) {
-    log(LoggingLevel.INFO, apexClass, message);
+    log(LoggingLevel.DEBUG, message);
   }
 
   global static void info(String message) {
-    log(LoggingLevel.INFO, null, message);
-  }
-
-  global static void warn(Type apexClass, String message) {
-    log(LoggingLevel.WARN, apexClass, message);
+    log(LoggingLevel.INFO, message);
   }
 
   global static void warn(String message) {
-    log(LoggingLevel.WARN, null, message);
-  }
-
-  global static void error(Type apexClass, String message) {
-    log(LoggingLevel.ERROR, apexClass, message);
+    log(LoggingLevel.WARN, message);
   }
 
   global static void error(String message) {
-    log(LoggingLevel.ERROR, null, message);
+    log(LoggingLevel.ERROR, message);
   }
 
   global static void trace() {
@@ -62,16 +46,9 @@ global with sharing class Logger {
     }
   }
 
-  private static void log(LoggingLevel level, Type apexClass, String message) {
-    String apexClassName = '';
-    if (apexClass != null) {
-      apexClassName = apexClass.getName();
-    } else {
-      Tracer.Trace trace = Tracer.newInstance().getLastTrace();
-      apexClassName = trace.ClassName == null ? '' : trace.ClassName;
-    }
+  private static void log(LoggingLevel level, String message) {
     for (LoggerBase logger : loggerImplementations) {
-      logger.log(new SingleLog(level, apexClassName, message));
+      logger.log(new SingleLog(level, Tracer.newInstance().getLastTrace(), message));
 
       if (immediate) {
         logger.flush();

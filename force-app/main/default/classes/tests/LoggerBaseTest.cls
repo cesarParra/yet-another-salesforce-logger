@@ -17,7 +17,7 @@ private class LoggerBaseTest {
     TestLog logImpl = new TestLog();
     SingleLog logToAdd = new SingleLog(
       LoggingLevel.DEBUG,
-      'TestClass',
+      Tracer.newInstance().getLastTrace(),
       'Test Message'
     );
     logImpl.log(logToAdd);
@@ -31,7 +31,7 @@ private class LoggerBaseTest {
     TestLog logImpl = new TestLog();
     SingleLog logToAdd = new SingleLog(
       LoggingLevel.DEBUG,
-      'TestClass',
+      Tracer.newInstance().getLastTrace(),
       'Test Message'
     );
     logImpl.log(logToAdd);

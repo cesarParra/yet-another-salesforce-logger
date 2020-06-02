@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "description": "Salesforce App",
   "scripts": {
+    "package:version": "sfdx force:package:version:create --package \"Logger\" -x -c --wait 30",
+    "apex:run:tests": "sfdx force:apex:test:run -w 10",
     "lint": "npm run lint:lwc",
     "lint:lwc": "eslint force-app/main/default/lwc",
     "test": "npm run test:unit",

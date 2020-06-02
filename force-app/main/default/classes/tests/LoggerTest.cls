@@ -38,23 +38,6 @@ private class LoggerTest {
     System.assertEquals('Test message', loggerImpl.Log.Message);
   }
 
-  private static void assertWithClassAndLevel(
-    TestLogger loggerImpl,
-    LoggingLevel expectedLevel
-  ) {
-    System.assertEquals(LoggerTest.class.getName(), loggerImpl.Log.ApexClass);
-    assertWithLevel(loggerImpl, expectedLevel);
-  }
-
-  @IsTest
-  private static void debug_withClass_expectLogged() {
-    TestLogger loggerImpl = setupMockLogger();
-
-    Logger.debug(LoggerTest.class, 'Test message');
-
-    assertWithClassAndLevel(loggerImpl, LoggingLevel.DEBUG);
-  }
-
   @IsTest
   private static void debug_withMessage_expectLogged() {
     TestLogger loggerImpl = setupMockLogger();
@@ -62,15 +45,6 @@ private class LoggerTest {
     Logger.debug('Test message');
 
     assertWithLevel(loggerImpl, LoggingLevel.DEBUG);
-  }
-
-  @IsTest
-  private static void info_withClass_expectLogged() {
-    TestLogger loggerImpl = setupMockLogger();
-
-    Logger.info(LoggerTest.class, 'Test message');
-
-    assertWithClassAndLevel(loggerImpl, LoggingLevel.INFO);
   }
 
   @IsTest
@@ -83,30 +57,12 @@ private class LoggerTest {
   }
 
   @IsTest
-  private static void warn_withClass_expectLogged() {
-    TestLogger loggerImpl = setupMockLogger();
-
-    Logger.warn(LoggerTest.class, 'Test message');
-
-    assertWithClassAndLevel(loggerImpl, LoggingLevel.WARN);
-  }
-
-  @IsTest
   private static void warn_withMessage_expectLogged() {
     TestLogger loggerImpl = setupMockLogger();
 
     Logger.warn('Test message');
 
     assertWithLevel(loggerImpl, LoggingLevel.WARN);
-  }
-
-  @IsTest
-  private static void error_withClass_expectLogged() {
-    TestLogger loggerImpl = setupMockLogger();
-
-    Logger.error(LoggerTest.class, 'Test message');
-
-    assertWithClassAndLevel(loggerImpl, LoggingLevel.ERROR);
   }
 
   @IsTest
