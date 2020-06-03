@@ -32,10 +32,18 @@ private class LoggerTest {
     TestLogger loggerImpl,
     LoggingLevel expectedLevel
   ) {
+    assertWithLevelAndMessage(loggerImpl, expectedLevel, 'Test message');
+  }
+
+  private static void assertWithLevelAndMessage(
+    TestLogger loggerImpl,
+    LoggingLevel expectedLevel,
+    String expectedMessage
+  ) {
     System.assert(loggerImpl.CommitCalled);
     System.assertNotEquals(null, loggerImpl.Log);
     System.assertEquals(expectedLevel, loggerImpl.Log.Level);
-    System.assertEquals('Test message', loggerImpl.Log.Message);
+    System.assertEquals(expectedMessage, loggerImpl.Log.Message);
   }
 
   @IsTest
@@ -81,5 +89,41 @@ private class LoggerTest {
     Logger.trace();
 
     System.assert(loggerImpl.TraceCalled);
+  }
+
+  @IsTest
+  private static void count_noLabel_expectCountedTowardsDefault() {
+    TestLogger loggerImpl = setupMockLogger();
+    Logger.count();
+    assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, 'default: 1');
+    Logger.count();
+    assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, 'default: 2');
+  }
+
+  @IsTest
+  private static void count_withLabel_expectCountedTowardsLabel() {
+    TestLogger loggerImpl = setupMockLogger();
+    Logger.count('test');
+    assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, 'test: 1');
+    Logger.count('test');
+    assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, 'test: 2');
+  }
+
+  @IsTest
+  private static void countReset_noLabel_defaultReset() {
+    TestLogger loggerImpl = setupMockLogger();
+    Logger.count();
+    assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, 'default: 1');
+    Logger.countReset();
+    assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, 'default: 1');
+  }
+
+  @IsTest
+  private static void countReset_withLabel_expectLabelReset() {
+    TestLogger loggerImpl = setupMockLogger();
+    Logger.count('test');
+    assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, 'test: 1');
+    Logger.countReset('test');
+    assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, 'test: 1');
   }
 }

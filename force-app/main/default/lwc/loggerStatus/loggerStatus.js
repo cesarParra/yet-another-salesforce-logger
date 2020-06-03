@@ -10,7 +10,29 @@ export default class LoggerStatus extends LightningElement {
 
   handleSubscribe() {
     const messageCallback = function(response) {
-      console.log("New message received : ", JSON.stringify(response));
+      const log = {
+        'userId': response.data.payload.yasl__UserId__c,
+        'class': response.data.payload.yasl__ApexClass__c,
+        'level': response.data.payload.yasl__LoggingLevel__c,
+        'column': response.data.payload.yasl__ColumnNumber__c,
+        'method': response.data.payload.yasl__ApexMethod__c,
+        'message': response.data.payload.yasl__Body__c,
+        'line': response.data.payload.yasl__LineNumber__c
+      };
+
+      // console.table(JSON.parse(log.message));
+
+      if (log.level === 'Error') {
+        console.error(JSON.stringify(log));
+        return;
+      }
+
+      if (log.level === 'Info') {
+        console.info(JSON.stringify(log));
+        return;
+      }
+
+      console.log(JSON.stringify(log));
     };
 
     // Invoke subscribe method of empApi. Pass reference to messageCallback
