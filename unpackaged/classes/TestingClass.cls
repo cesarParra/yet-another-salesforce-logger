@@ -1,7 +1,7 @@
 public with sharing class TestingClass {
     @AuraEnabled
     public static void callLogger() {
-        Logger.table(new List<SomeTestClass> { new SomeTestClass(), new SomeTestClass() });
+        Logger.warn('Some warning');
     }
 
     public class SomeTestClass {

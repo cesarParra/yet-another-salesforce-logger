@@ -16,11 +16,16 @@ export default class LoggerStatus extends LightningElement {
         'level': response.data.payload.yasl__LoggingLevel__c,
         'column': response.data.payload.yasl__ColumnNumber__c,
         'method': response.data.payload.yasl__ApexMethod__c,
-        'message': response.data.payload.yasl__Body__c,
-        'line': response.data.payload.yasl__LineNumber__c
+        'message': JSON.parse(response.data.payload.yasl__Body__c),
+        'line': response.data.payload.yasl__LineNumber__c,
+        'displayType': response.data.payload.yasl__DisplayType__c
       };
 
-      // console.table(JSON.parse(log.message));
+      if (log.displayType === 'table') {
+        console.log('class:', log.class, 'method:', log.method, 'line:', log.line, 'column:', log.column);
+        console.table(log.message);
+        return;
+      }
 
       if (log.level === 'Error') {
         console.error(JSON.stringify(log));
@@ -29,6 +34,11 @@ export default class LoggerStatus extends LightningElement {
 
       if (log.level === 'Info') {
         console.info(JSON.stringify(log));
+        return;
+      }
+
+      if (log.level === 'Warn') {
+        console.warn(JSON.stringify(log));
         return;
       }
 

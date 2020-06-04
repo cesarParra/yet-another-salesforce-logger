@@ -11,6 +11,7 @@ public with sharing class PlatformEventLog extends LoggerBase {
           ColumnNumber__c = log.LastTrace.ColumnNumber,
           LoggingLevel__c = log.Level.name().toLowerCase().capitalize(),
           Body__c = log.Message,
+          DisplayType__c = log.DisplayType,
           UserId__c = UserInfo.getUserId()
         )
       );

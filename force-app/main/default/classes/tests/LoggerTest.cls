@@ -38,12 +38,13 @@ private class LoggerTest {
   private static void assertWithLevelAndMessage(
     TestLogger loggerImpl,
     LoggingLevel expectedLevel,
-    String expectedMessage
+    Object expectedMessage
   ) {
+    String serializedMessage = JSON.serialize(expectedMessage);
     System.assert(loggerImpl.CommitCalled);
     System.assertNotEquals(null, loggerImpl.Log);
     System.assertEquals(expectedLevel, loggerImpl.Log.Level);
-    System.assertEquals(expectedMessage, loggerImpl.Log.Message);
+    System.assertEquals(serializedMessage, loggerImpl.Log.Message);
   }
 
   @IsTest
@@ -125,5 +126,13 @@ private class LoggerTest {
     assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, 'test: 1');
     Logger.countReset('test');
     assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, 'test: 1');
+  }
+
+  @IsTest
+  private static void table_expectLoggerCalled() {
+    TestLogger loggerImpl = setupMockLogger();
+    List<String> testStrings = new List<String> { 'test' };
+    Logger.table(testStrings);
+    assertWithLevelAndMessage(loggerImpl, LoggingLevel.DEBUG, testStrings);
   }
 }

@@ -14,20 +14,20 @@ global with sharing class Logger {
     loggerImplementations = loggers;
   }
 
-  global static void debug(String message) {
-    log(LoggingLevel.DEBUG, message);
+  global static void debug(Object message) {
+    log(LoggingLevel.DEBUG, JSON.serialize(message));
   }
 
   global static void info(String message) {
-    log(LoggingLevel.INFO, message);
+    log(LoggingLevel.INFO, JSON.serialize(message));
   }
 
   global static void warn(String message) {
-    log(LoggingLevel.WARN, message);
+    log(LoggingLevel.WARN, JSON.serialize(message));
   }
 
   global static void error(String message) {
-    log(LoggingLevel.ERROR, message);
+    log(LoggingLevel.ERROR, JSON.serialize(message));
   }
 
   global static void trace() {
@@ -67,12 +67,8 @@ global with sharing class Logger {
     countTracker.remove(label);
   }
 
-  // TODO: Accept set of objects
-  // TODO: Unit tests
-  // TODO: Parse on the JS side
-  // TODO: Ability to specify which properties to include during serialization
-  global static void table(List<Object> tableList) {
-    debug(JSON.serialize(tableList));
+  global static void table(Object tableList) {
+    log(LoggingLevel.DEBUG, JSON.serialize(tableList), 'table');
   }
 
   global static void flush() {
@@ -82,8 +78,12 @@ global with sharing class Logger {
   }
 
   private static void log(LoggingLevel level, String message) {
+    log(level, message, 'standard');
+  }
+
+  private static void log(LoggingLevel level, String message, String displayType) {
     for (LoggerBase logger : loggerImplementations) {
-      logger.log(new SingleLog(level, Tracer.newInstance().getLastTrace(), message));
+      logger.log(new SingleLog(level, Tracer.newInstance().getLastTrace(), message, displayType));
 
       if (immediate) {
         logger.flush();
