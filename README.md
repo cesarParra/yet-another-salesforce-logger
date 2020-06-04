@@ -8,11 +8,11 @@ Yet Another Salesforce Logger (YASL) can be installed as an unlocked package.
 
 ### By SFDX
 
-`sfdx force:package:install --package 04t5w000005qobQAAQ`
+`sfdx force:package:install --package 04t5w000005qodlAAA`
 
 ### By installation URL
 
-Installation URL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5w000005qobQAAQ
+Installation URL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5w000005qodlAAA
 
 ## Usage
 

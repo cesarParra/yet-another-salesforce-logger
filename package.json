@@ -14,12 +14,15 @@
     "test:unit:debug": "sfdx-lwc-jest --debug",
     "test:unit:coverage": "sfdx-lwc-jest --coverage",
     "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
-    "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\""
+    "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
+    "docs:generate": "apexdocs-generate -s force-app - docs -p global -g docsify -c docs/config.json -o false"
   },
   "devDependencies": {
+    "@cparra/apexdocs": "^1.9.5",
     "@prettier/plugin-xml": "^0.7.0",
     "@salesforce/eslint-config-lwc": "^0.4.0",
     "@salesforce/sfdx-lwc-jest": "^0.7.0",
+    "docsify": "^4.11.3",
     "eslint": "^5.16.0",
     "prettier": "^1.19.1",
     "prettier-plugin-apex": "^1.0.0"
