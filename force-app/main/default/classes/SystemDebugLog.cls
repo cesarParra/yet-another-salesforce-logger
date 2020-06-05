@@ -9,9 +9,16 @@ public class SystemDebugLog extends LoggerBase {
   }
 
   private String getFormattedMessage(SingleLog log) {
+    if (log.LastTrace == null) {
+      return log.Message;
+    }
+
+    String className = log.LastTrace.ClassName == null ? '' : log.LastTrace.ClassName;
+    String methodName = log.LastTrace.MethodName == null ? '' : log.LastTrace.MethodName;
+    String message = log.Message == null ? '' : log.Message;
     return String.format(
       MESSAGE_FORMAT,
-      new List<String>{ log.LastTrace.ClassName, log.LastTrace.MethodName, log.Message }
+      new List<String>{ className, methodName, message }
     );
   }
 
