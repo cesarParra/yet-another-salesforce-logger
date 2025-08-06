@@ -20,10 +20,10 @@
   "devDependencies": {
     "@cparra/apexdocs": "^1.9.5",
     "@prettier/plugin-xml": "^0.7.0",
-    "@salesforce/eslint-config-lwc": "^0.4.0",
+    "@salesforce/eslint-config-lwc": "^4.0.0",
     "@salesforce/sfdx-lwc-jest": "^1.2.1",
     "docsify": "^4.13.1",
-    "eslint": "^5.16.0",
+    "eslint": "^9.32.0",
     "prettier": "^1.19.1",
     "prettier-plugin-apex": "^1.13.0"
   }
